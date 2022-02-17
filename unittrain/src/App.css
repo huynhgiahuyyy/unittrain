@@ -1,8 +1,9 @@
 .container {
+  display: flow-root;
+
+}
+
+.container2 {
   display: flex;
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  min-height: 100vh;
-  margin-top: 100px;
+
 }

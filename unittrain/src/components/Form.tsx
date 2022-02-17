@@ -17,15 +17,20 @@ export default function Form({people, setPeople}:IProps){
       e.preventDefault();
       setPeople([...people,{name: inputData.name, age: Number(inputData.age), bio: inputData.bio}])
       setInputData({name:"", age:"", bio:""});
+    
     }
     return (
         <div className="form-container">
-            <h1>Form</h1>
+            
+            <h2>Form</h2>
             <form onSubmit={onSubmit}>
                 <input type="text" name="name" id="name" placeholder="name" onChange={onChange} value={inputData.name}/>
                 <input type="number" name="age" id="age" placeholder="age" onChange={onChange}value={inputData.age}/>
                 <textarea name="bio" id="bio" placeholder="Bio Description" onChange={onChange}value={inputData.bio}></textarea>
                 <button type="submit">Submit</button>
+                <br>
+                </br>
+                
             </form>
         </div>
     )

@@ -15,7 +15,7 @@ export default function List({people}: IProps){
    )}
     return (
         <div className="list-container">
-            <h1>List</h1>
+            <h2>List</h2>
             {renderList()}
         </div>
     )
