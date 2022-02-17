@@ -21,7 +21,6 @@ export default function App(){
       
       <Link to="/tut"><h2>How to use?</h2></Link>
       <Routes>
-
         <Route path="/tut" element={<Banner/ >}></Route>
       </Routes>
       <hr>
