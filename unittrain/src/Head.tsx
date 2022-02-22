@@ -1,12 +1,14 @@
 import React from 'react'
 import { Routes , Route, Link } from 'react-router-dom';
 import Aboutme from './components/Aboutme';
+import PrimarySearchAppBar from './components/PrimarySearchAppBar';
 
 
 import "./Head.css"
  function Head() {
   return (
     <div className="header">
+       <PrimarySearchAppBar />
       <h1>Pet Project React (input member)</h1>
       
       <hr></hr>

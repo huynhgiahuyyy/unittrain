@@ -5,7 +5,8 @@ import Form from './components/Form'
 import List from './components/List'
 import Banner from './components/Banner'
 import "./App.css" 
- 
+import Form2 from './components/Form2';
+
 export interface IState{
   people: {
       name: string,
@@ -18,6 +19,7 @@ export default function App(){
   return (
     <div>
     <div className="container">
+     
       
       <Link to="/tut"><h2>How to use?</h2></Link>
       <Routes>
@@ -31,7 +33,12 @@ export default function App(){
       <div className="container2">
       <Form people={people} setPeople={setPeople} />
       <List people={people} />
+      <div className="container2">
+      <Form2 />
       </div>
+      
+      </div >
+      
       
       </div>
     
