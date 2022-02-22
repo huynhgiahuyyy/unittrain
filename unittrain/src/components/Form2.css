@@ -33,3 +33,6 @@ button {
 button:hover {
   background-color: rgb(165, 165, 165);
 }
+h4 {
+  text-align: center;
+}

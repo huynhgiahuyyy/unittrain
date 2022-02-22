@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes , Route, Link } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import Head from './Head';
+import Head from './components/Head';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -12,7 +12,7 @@ ReactDOM.render(
     
     <BrowserRouter>
     
-    <Head />
+    
     <App />
     </BrowserRouter>
     

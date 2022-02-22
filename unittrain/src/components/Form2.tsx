@@ -1,4 +1,6 @@
 import './Form2.css';
+
+
 import React from 'react';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -6,8 +8,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
-
-import { useForm } from 'react-hook-form';
+import { useForm,SubmitHandler, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import Button from '@mui/material/Button';
@@ -47,6 +48,7 @@ const Form2: React.FC = () => {
     gender: Yup.string()  });
 
   const {
+    control,
     register,
     handleSubmit,
     reset,
@@ -61,34 +63,67 @@ const Form2: React.FC = () => {
 
   return (
     <div className="register-form">
-      <h2>
-          REACT-HOOK-FORM AND YUP!
-      </h2>
-      <hr></hr>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="form-group">
-          <label>Full</label>
-          <input
-            type="text"
-            {...register('fullname')}
-            className={`form-control ${errors.fullname ? 'is-invalid' : ''}`}
-          /> 
-         
-  );
-          <div className="invalid-feedback">{errors.fullname?.message}</div>
-        </div>
-
-        <div className="form-group">
-          <label>Username</label>
-          <input
-            type="text"
-            {...register('username')}
-            className={`form-control ${errors.username ? 'is-invalid' : ''}`}
+      
+      <Controller
+            name="fullname"
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <TextField
+                {...field}
+                label="Full Name"
+                variant="outlined"
+                error={!!errors.fullname}
+                helperText={errors.fullname ? errors.fullname?.message : ''}
+                fullWidth
+                margin="dense"
+              />
+              )}
           />
-          <div className="invalid-feedback">{errors.username?.message}</div>
-        </div>
+ 
+      <form onSubmit={handleSubmit(onSubmit)}>
+        
+         
+          
+         <Controller
+            name="email"
+            control={control}
+            defaultValue="example@unit.com.vn"
+            render={({ field }) => (
+              <TextField
+                {...field}
+                label="Email"
+                variant="outlined"
+                error={!!errors.email}
+                helperText={errors.email ? errors.email?.message : ''}
+                fullWidth
+                margin="dense"
+              />
+              )}
+          />
+
+         
 
         <div className="form-group">
+          
+        </div>
+        <Controller
+            name="username"
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <TextField
+                {...field}
+                label="Username"
+                variant="outlined"
+                error={!!errors.username}
+                helperText={errors.username ? errors.username?.message : ''}
+                fullWidth
+                margin="dense"
+              />
+              )}
+          />     
+        {/* <div className="form-group">
           <label>Email</label>
           <input
             type="text"
@@ -96,29 +131,49 @@ const Form2: React.FC = () => {
             className={`form-control ${errors.email ? 'is-invalid' : ''}`}
           />
           <div className="invalid-feedback">{errors.email?.message}</div>
-        </div>
-
-        <div className="form-group">
-          <label>Password</label>
-          <input
-            type="password"
-            {...register('password')}
-            className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+        </div> */}
+        <Controller
+            name="password"
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <TextField
+                {...field}
+                type="password"
+                label="Password"
+                variant="outlined"
+                error={!!errors.password}
+                helperText={errors.password ? errors.password?.message : ''}
+                fullWidth
+                margin="dense"
+              />
+              )}
           />
-          <div className="invalid-feedback">{errors.password?.message}</div>
+          <Controller
+            name="confirmPassword"
+            control={control}
+            defaultValue=""
+            render={({ field }) => (
+              <TextField
+                {...field}
+                type="password"
+                label="ConfirmPassword"
+                variant="outlined"
+                error={!!errors.confirmPassword}
+                helperText={errors.confirmPassword ? errors.confirmPassword?.message : ''}
+                fullWidth
+                margin="dense"
+              />
+              )}
+          />
+        <div className="form-group">
+        
+          
         </div>
         <div className="form-group">
-          <label>Confirm Password</label>
-          <input
-            type="password"
-            {...register('confirmPassword')}
-            className={`form-control ${
-              errors.confirmPassword ? 'is-invalid' : ''
-            }`}
-          />
-          <div className="invalid-feedback">
-            {errors.confirmPassword?.message}
-          </div>
+         
+          
+         
         </div>
         <div>
           {/* <label>Area: &nbsp; </label>
@@ -126,7 +181,9 @@ const Form2: React.FC = () => {
         <option value="sg">HCM</option>
         <option value="hn">HaNoi</option>
         <option value="other">other</option>
-      </select> */}
+      </select> */} 
+      <br>
+      </br>
       <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Area</InputLabel>
@@ -144,8 +201,7 @@ const Form2: React.FC = () => {
         </Select>
       </FormControl>
     </Box>
-            <br>
-            </br>
+           
             </div>
         <div className="form-group form-check">
         <Checkbox {...label} defaultChecked
@@ -162,11 +218,11 @@ const Form2: React.FC = () => {
           <div className="invalid-feedback">{errors.acceptTerms?.message}</div>
         </div>
 
-        <div className="form-group">);
+        <div className="form-group">
         
         <Stack spacing={2} direction="row">
        
-      <Button variant="contained" type="submit" className="btn btn-primary">
+      <Button variant="contained" type="submit" className="btn btn-primary" color="success">
             Đăng kí
           </Button>
           <Button
@@ -174,6 +230,7 @@ const Form2: React.FC = () => {
             type="button"
             onClick={() => reset()}
             className="btn btn-warning float-right"
+            
           >
             Reset
           </Button>

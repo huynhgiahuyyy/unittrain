@@ -3,8 +3,8 @@
   }
   
   .list-item-container {
-    border: 1px solid antiquewhite;
+    border: 1px solid white;
     padding: 1rem;
-    border-radius: 15px 15px 15px 15px;
+    border-radius: 5px 5px 5px 5px;
 
   }

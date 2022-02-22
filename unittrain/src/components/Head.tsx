@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes , Route, Link } from 'react-router-dom';
-import Aboutme from './components/Aboutme';
-import PrimarySearchAppBar from './components/PrimarySearchAppBar';
+import Aboutme from './Aboutme';
+import PrimarySearchAppBar from './PrimarySearchAppBar';
 
 
 import "./Head.css"
@@ -13,7 +13,7 @@ import "./Head.css"
       
       <hr></hr>
       
-      <hr></hr>
+      
       <Link to="/Aboutme"><h2>About me</h2></Link>
       
       <hr>

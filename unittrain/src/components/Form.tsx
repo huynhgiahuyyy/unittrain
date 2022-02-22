@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import "../css/Form.css"
 import {IState as Props} from "../App";
 import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 interface IProps{
   people: Props['people'],
@@ -9,6 +11,7 @@ interface IProps{
 
 }
 export default function Form({people, setPeople}:IProps){
+  //const [people, setPeople] = useState<IProps["people"]>([{name:"Huy Huynh",age:18,bio:"developer"}]);
 
     const [inputData, setInputData] = useState({name:"", age:"", bio:""});
 
@@ -25,9 +28,21 @@ export default function Form({people, setPeople}:IProps){
             
             <h2>Form</h2>
             <form onSubmit={onSubmit}>
-                <input type="text" name="name" id="name" placeholder="name" onChange={onChange} value={inputData.name}/>
+            <Box
+      component="form"
+      sx={{
+        '& > :not(style)': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+      <TextField type="text" name="name"   id="name" label="Name" variant="outlined"  onChange={onChange} value={inputData.name}/>
+      <TextField type="number" name="age"  id="age" label="Age" variant="outlined" onChange={onChange} value={inputData.age} />
+      <TextField type="text" name="bio"    id="bio" label="Major" variant="outlined"  onChange={onChange} value={inputData.bio}/>
+    </Box>
+                {/* <input type="text" name="name" id="name" placeholder="name" onChange={onChange} value={inputData.name}/>
                 <input type="number" name="age" id="age" placeholder="age" onChange={onChange}value={inputData.age}/>
-                <textarea name="bio" id="bio" placeholder="Bio Description" onChange={onChange}value={inputData.bio}></textarea>
+                <textarea name="bio" id="bio" placeholder="Bio Description" onChange={onChange}value={inputData.bio}></textarea> */}
                 <Stack spacing={2} direction="row">
                 <Button type="submit" variant="contained">Submit</Button>
                 </Stack>
